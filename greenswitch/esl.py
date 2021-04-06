@@ -188,7 +188,9 @@ class ESLProtocol(object):
                 handlers = self.event_handlers.get('*')
 
             if not handlers:
-                continue
+                handlers = self.event_handlers.get('all')
+                if not handlers:
+                    continue
 
             if hasattr(self, 'before_handle'):
                 self._safe_exec_handler(self.before_handle, event)
